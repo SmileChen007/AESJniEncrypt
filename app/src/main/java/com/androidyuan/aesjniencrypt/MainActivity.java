@@ -1,5 +1,6 @@
 package com.androidyuan.aesjniencrypt;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("thisHascode", SignatureTool.getSignature(this) + "");
 
         toast(new AESEncrypt().checkSignature(this)+"");
+
+        startActivity(new Intent(this,TestAct.class));
     }
 
 
