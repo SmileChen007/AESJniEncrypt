@@ -26,9 +26,6 @@ public class TestAct extends AppCompatActivity {
 
         //toast(SignatureTool.getSignature(this)+"");
 
-        Log.d("thisHascode", SignatureTool.getSignature(this) + "");
-
-        toast(new AESEncrypt().checkSignature(this) + "");
         test();
         testBaseType();
 
@@ -58,20 +55,61 @@ public class TestAct extends AppCompatActivity {
 //        }
 
 
-        //2.不会OOm
-        {
-            byte[] mBytes = new byte[210 * 1024 * 1024];
-            int a=0;
-        }
-        byte[] mBytesss = new byte[1* 1024];
-        System.gc();
-        {
-            byte[] mBytes = new byte[210 * 1024 * 1024];
-            mBytes=null;
-            int a=0;
-        }
-        byte[] mBytessss = new byte[1* 1024];
-        System.gc();
+        //2.会OOm
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//            mBytes=null;
+//        }
+//        System.gc();
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//            mBytes=null;
+//        }
+//        System.gc();
+
+
+        //3. 会OOm
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//
+//            int a=0;
+//        }
+//        System.gc();
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//
+//            int a=0;
+//        }
+//        System.gc();
+
+
+        //3. 不会OOm
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//            mBytes=null;
+//            int a=0;
+//        }
+//        System.gc();
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//            mBytes=null;
+//            int a=0;
+//        }
+//        System.gc();
+
+
+        //3. 不会OOm  这里会自动触发GC
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//            mBytes=null;
+//            int a=0;
+//        }
+//        {
+//            byte[] mBytes = new byte[210 * 1024 * 1024];
+//            mBytes=null;
+//            int a=0;
+//        }
+
 
     }
 
