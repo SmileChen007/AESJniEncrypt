@@ -26,7 +26,12 @@ public class TestAct extends AppCompatActivity {
 
         //toast(SignatureTool.getSignature(this)+"");
 
-        test();
+        try {
+            test();
+        }
+        catch (Throwable throwable) {
+            toast("error");
+        }
         testBaseType();
 
     }
@@ -113,7 +118,7 @@ public class TestAct extends AppCompatActivity {
 
     }
 
-    private void test() {
+    private void test() throws Throwable {
 
 
         d("MAX_MEM:" + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "M");
@@ -183,20 +188,16 @@ public class TestAct extends AppCompatActivity {
 //        model4=null;
 
 
+        //7.会OOM finalize 并没有什么卵用 java不推荐你用，但是你用了也没有效果根本释放不了的
 
-
-        //7.不会OOM
-//        try {
-//            TestModel model = new TestModel();
-//            model.finalize();
-//            TestModel model2 = new TestModel();
-//            model.finalize();
-//            TestModel model3 = new TestModel();
-//            model.finalize();
-//            TestModel model4 = new TestModel();
-//            model.finalize();
-//        }
-//        catch (Throwable ignored) {}
+        TestModel model = new TestModel();
+        model.finalize();
+        TestModel model2 = new TestModel();
+        model.finalize();
+        TestModel model3 = new TestModel();
+        model.finalize();
+        TestModel model4 = new TestModel();
+        model.finalize();
 
 
     }
